@@ -170,6 +170,18 @@ vo = filter(h,1,v); %vo recebe 'v' filtrado, com filtro descrito por 'h' e '1'
 V = abs(fftshift(fft(v)))/N; %V recebe a FFT do Sinal demodulador v(t)
 Vo = abs(fftshift(fft(vo)))/N; %Vo recebe a FFT do Sinal filtrado vo(t)
 
+##figure();
+##subplot(2,1,1);
+##plot(t,vo, 'r');
+##title('Sinal v_o');
+##grid on;
+##subplot(2,1,2); 
+##plot(t,m, 'b');
+##title('Sinal m');
+##xlabel('Tempo (s)');
+##grid on;
+
+
 %% Plot dos sinais V(f) e Vo(f)
 %%
 
@@ -200,6 +212,7 @@ xlabel('Frequencia(kHz)'); %define o nome do eixo X como 'Frequencia(kHz)'
 ylim([0 3e-3]); %define os limites do eixo y em 0 e 0,003
 xlim([0 50]); %define os limites do eixo X em 0 e 50
 grid on; %construcao das linhas de grade
+
 
 ##sound(m,fs); %reproduz o Sinal do vetor 'm', com frequencia de amostragem 'fs'
 ##sound(vo,fs); %reproduz o Sinal do vetor 'vo', com frequencia de amostragem 'fs
