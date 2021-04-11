@@ -12,6 +12,7 @@
 % portadora, e da Modulacao, no dominio do tempo e no dominio da
 % frequencia;
 % * Explicar no relatorio cada forma de onda;
+%%
 
 
 %% EXERCICIO 1 - MODULACAO
@@ -21,6 +22,7 @@
 % Para que nao ocorra perca de informacao $A_0$ deve ser escolhido para que o minimo valor 
 % do Sinal, quando somado a $A_0$ seja maior que 0. A funcao _min_ nos garante que $A_0$ foi
 % escolhido corretamente.
+%%
 
 %Limpar e fechar tudo
 clc; %limpa a janela de comandos
@@ -60,6 +62,7 @@ s=(A0+m).*c; %'s' recebe o sinal modulado
 % $s = (A_0.+m)*c$, no terceiro grafico da figura 1 e apresentado o Sinal modulado em azul
 % ao adicionarmos um valor DC de $A_0$ ao Sinal da mensagem e possivel ver o envelope
 % no Sinal modulado.
+%%
 
 % Plot do Sinal de audio m(t)
 figure(); %cria uma janela de figura
@@ -100,7 +103,8 @@ f = linspace(-fs/2,fs/2,N); %'f' recebe um vetor de 'N' pontos gerados entre '-f
 % do Sinal da mensagem, atraves de uma multiplicacao com um cosseno a origem da mensagem M
 % foi defasado para coincidir com 20 KHz a fim de ter uma melhor vizualicao sendo possivel
 % ver na imagem que a modulacao foi feita corretamente, pois temos no Sinal s as tres frequencias, 
-%as duas frequencias laterais $f_c+f_m$ e $f_c-f_m$ e a frequencia da portadora $f_c$
+% as duas frequencias laterais $f_c+f_m$ e $f_c-f_m$ e a frequencia da portadora $f_c$
+%%
 
 j = m.*cos(2*pi*fc*t); %'j' recebe o sinal da mensagem 'm', defasada em 20 kHz
 J = abs(fftshift(fft(j)))/N; %'J' recebe o absoluto da FFT do sinal j(t)
@@ -160,12 +164,15 @@ h = fir1(2e3,fcorte); %'h' recebe um filtro digital FIR passa-baixas de ordem 20
 [H,fh] = freqz(h,1,N/2+1,fs/1e3); %[H,fh] recebe a resposta do filtro 
 H = abs(H); %'H' recebe o modulo de 'H'
 vo = filter(h,1,v); %vo recebe 'v' filtrado, com filtro descrito por 'h' e '1'
-
+vo = vo.-0.5; % removendo a componente DC do sinal
 % FFT de v(t) e vo(t)
 V = abs(fftshift(fft(v)))/N; %V recebe a FFT do Sinal demodulador v(t)
 Vo = abs(fftshift(fft(vo)))/N; %Vo recebe a FFT do Sinal filtrado vo(t)
 
 figure(); %cria uma janela de figura
+%%
+% Na figura 4 é possivel ver o sinal de saida do filtro vo(t), com amplitude sendo metade do sinal da mensagem m(t)
+%%
 
 subplot(2,1,1);  %divide a janela de figura em 2x1 e seleciona a primeira parte para o plot atual
 plot(t,vo, 'r'); %plota 'vo' versus 't' em vermelho
