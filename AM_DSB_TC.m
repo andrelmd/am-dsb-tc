@@ -20,7 +20,7 @@
 % nao chega a $10Khz$ sendo assim, a frequencia da portadora sendo $20KHz$ supre o necessario.
 % Para que nao ocorra perca de informacao $A_0$ deve ser escolhido para que o minimo valor 
 % do Sinal, quando somado a $A_0$ seja maior que 0. A funcao _min_ nos garante que $A_0$ foi
-% escolhido corretamente.
+% escolhido corretamente, pois ela retorna o valor de -0.68.
 
 % Limpar e fechar tudo
 clc; %limpa a janela de comandos
